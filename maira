@@ -1,0 +1,324 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNiezQjY36SRAl4Soa4AFXt",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/mw549674-svg/-Mercy/blob/main/maira\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd"
+      ],
+      "metadata": {
+        "id": "oA8taa8_d8_G"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "data = {\n",
+        "    'Name': ['Salma', 'Babu', 'Nand', 'Irfan'],\n",
+        "    'Math': [25, 33, 35, 67],\n",
+        "    'English': [89, 54, 67, 90],\n",
+        "    'Science': [89, 54, 67, 90],\n",
+        "    'History': [89, 54, 67, 90],\n",
+        "\n",
+        "}\n",
+        "students = pd.DataFrame(data)\n",
+        "print(students)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "E-DEGqiieni7",
+        "outputId": "b4bc9390-bdf4-41d1-90d3-a036db68fc88"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "    Name  Math  English  Science  History\n",
+            "0  Salma    25       89       89       89\n",
+            "1   Babu    33       54       54       54\n",
+            "2   Nand    35       67       67       67\n",
+            "3  Irfan    67       90       90       90\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(students['Math']) #Selecting one column\n",
+        "print(students[['Name', 'Math']]) #Selecting multiple columns\n",
+        "math_scores = students['Math'] #saving selected columns\n",
+        "print(math_scores)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "y9UNA59Lg49g",
+        "outputId": "c94926b2-8155-4cd6-8313-5c53d7a71990"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "0    25\n",
+            "1    33\n",
+            "2    35\n",
+            "3    67\n",
+            "Name: Math, dtype: int64\n",
+            "    Name  Math\n",
+            "0  Salma    25\n",
+            "1   Babu    33\n",
+            "2   Nand    35\n",
+            "3  Irfan    67\n",
+            "0    25\n",
+            "1    33\n",
+            "2    35\n",
+            "3    67\n",
+            "Name: Math, dtype: int64\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Selecting Rows:(loc[]selects rows using lables)"
+      ],
+      "metadata": {
+        "id": "EUkjpVSai-ss"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(students.loc[0]) #selecting one row\n",
+        "print(students.loc[[0, 1]]) #selecting multiple rows\n",
+        "#iloc[] selects rows using position numbers\n",
+        "print(students.iloc[0]) #Selecting one row\n",
+        "print(students.iloc[[0, 1]]) #selecting multiple mutiple rows"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NCuwlZfajYbY",
+        "outputId": "f61c2c57-947d-4869-a32e-af0388b20875"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Name       Salma\n",
+            "Math          25\n",
+            "English       89\n",
+            "Science       89\n",
+            "History       89\n",
+            "Name: 0, dtype: object\n",
+            "    Name  Math  English  Science  History\n",
+            "0  Salma    25       89       89       89\n",
+            "1   Babu    33       54       54       54\n",
+            "Name       Salma\n",
+            "Math          25\n",
+            "English       89\n",
+            "Science       89\n",
+            "History       89\n",
+            "Name: 0, dtype: object\n",
+            "    Name  Math  English  Science  History\n",
+            "0  Salma    25       89       89       89\n",
+            "1   Babu    33       54       54       54\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#selecting specific row and columns\n",
+        "print(students.loc[0, 'Name']) #selecting one row and one column\n",
+        "print(students.loc[[0, 1], ['Name', 'Math']]) #multiple rows and columns"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "pkajBj4rl5uM",
+        "outputId": "44c55085-4796-43e7-edf9-f688068ba41a"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Salma\n",
+            "    Name  Math\n",
+            "0  Salma    25\n",
+            "1   Babu    33\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Filterig data\n",
+        "#students with more than 60 in maths\n",
+        "highscores = students[students['Math'] > 60]\n",
+        "print(highscores)\n",
+        "print(students['Math'].mean()) #average score in maths\n",
+        "print(students['Math'].min()) #minimum score in maths\n",
+        "print(students['Math'].max()) #maximum score in maths\n",
+        "print(students['Math'].sum()) #total of scores in maths\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6u0E8mxEm0hs",
+        "outputId": "e6f5f17a-d004-4c8d-a750-f7f3b7b136cd"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "    Name  Math  English  Science  History\n",
+            "3  Irfan    67       90       90       90\n",
+            "40.0\n",
+            "25\n",
+            "67\n",
+            "160\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#create the DataFrame"
+      ],
+      "metadata": {
+        "id": "x9LltdG_qypF"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "data = {\n",
+        "    'Name':['Song A', 'Song B', 'song C', 'Song D', 'Song E', 'Song F'],\n",
+        "    'Artist':['John', 'Alex', 'Jane', 'Mary', 'Lucy', 'David'],\n",
+        "    'Genre':['pop', 'Rock', 'Gospel', 'Dance', 'R$B', 'Hip Hop'],\n",
+        "    'Duraton_mins':['3.5', '4.7', '3.8', '5.3', '4.4', '5.5'],\n",
+        "    'Popularity_score':[56, 79, 86, 76, 67, 89]\n",
+        "}\n",
+        "sportify = pd.DataFrame(data)\n",
+        "print(sportify)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ddJn33p3q4KG",
+        "outputId": "3930b784-f2d5-4305-f464-f8efa42261cd"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "     Name Artist    Genre Duraton_mins  Popularity_score\n",
+            "0  Song A   John      pop          3.5                56\n",
+            "1  Song B   Alex     Rock          4.7                79\n",
+            "2  song C   Jane   Gospel          3.8                86\n",
+            "3  Song D   Mary    Dance          5.3                76\n",
+            "4  Song E   Lucy      R$B          4.4                67\n",
+            "5  Song F  David  Hip Hop          5.5                89\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(sportify.loc[0]) #First row\n",
+        "print(sportify.loc[sportify['Popularity_score'].idxmax()]) #most popular track\n",
+        "sportify['Duraton_mins'] = sportify['Duraton_mins'].astype(float) # Convert to numeric\n",
+        "print(\"Average duration: {sportify['Duraton_mins'].mean()}\") #Average duration\n",
+        "popular = sportify[sportify['Popularity_score'] > 70]\n",
+        "print(popular)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "EYH9TtUBvXFu",
+        "outputId": "a72b743a-c00f-40ca-8f90-d619ef8efb14"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Name                Song A\n",
+            "Artist                John\n",
+            "Genre                  pop\n",
+            "Duraton_mins           3.5\n",
+            "Popularity_score        56\n",
+            "Name: 0, dtype: object\n",
+            "Name                 Song F\n",
+            "Artist                David\n",
+            "Genre               Hip Hop\n",
+            "Duraton_mins            5.5\n",
+            "Popularity_score         89\n",
+            "Name: 5, dtype: object\n",
+            "Average duration: {sportify['Duraton_mins'].mean()}\n",
+            "     Name Artist    Genre  Duraton_mins  Popularity_score\n",
+            "1  Song B   Alex     Rock           4.7                79\n",
+            "2  song C   Jane   Gospel           3.8                86\n",
+            "3  Song D   Mary    Dance           5.3                76\n",
+            "5  Song F  David  Hip Hop           5.5                89\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
